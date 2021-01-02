@@ -1,0 +1,7 @@
+// reference : https://velog.io/@hidaehyunlee/%EC%BB%B4%ED%93%A8%ED%84%B0-%EA%B5%AC%EC%A1%B0%EB%A5%BC-%ED%86%B5%ED%95%B4-%EC%9D%B4%ED%95%B4%ED%95%98%EB%8A%94-%ED%8C%8C%EC%9D%BCFile%EA%B3%BC-%EC%86%8C%EC%BC%93Socket
+// https://kosaf04pyh.tistory.com/196
+
+
+NTFS(New Technology File System) :  윈도우에 최적화 되어 있는 파일 시스템 종류
+
+File : 유저 모드 어플리케이션이 커널에 진입할 수 있도록 추상화된 인터페이스
