@@ -1,0 +1,8 @@
+// reference : https://smartits.tistory.com/209
+// https://www.digicert.com/kr/what-is-ssl-tls-https/
+
+SSL(Secure Socket Layers) : SSL은 웹사이트와 브라우저(혹은, 두 서버) 사이에 전송된 데이터를 암호화하여 인터넷 연결을 보안을 유지하는 표준 기술
+
+TLS(Transport Layer Security) : TLS는 가장 최신 기술로 더 강력한 버전의 SSL
+
+HTTPS(Hyper Text Protocol Secure) :  HTTPS는 웹사이트를 SSL/TLS 인증서로 보안하는 경우 URL 창에 표시
