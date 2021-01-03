@@ -3,12 +3,22 @@
 // https://asfirstalways.tistory.com/356
 // https://ko.wikipedia.org/wiki/HTTP
 // https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/Network
+// https://wayhome25.github.io/cs/2018/03/11/ssl-https/
 
 HTTP(HyperText Transfer Protocol) : 클라이언트와 서버 사이에 이루어지는 요청/응답 프로토콜
                                     평문 통신이라 도청 가능, 통신 상대 확인하지 않아 위장 가능, 완전성 증명할 수 없어 변조 가능
+                                    통신 자체를 암호화 SSL, TLS라는 다른 프로토콜을 조합함으로써 HTTP의 통신 내용을 암호화 가능
 
 SSL(Secure Socket Layers) : SSL은 웹사이트와 브라우저(혹은, 두 서버) 사이에 전송된 데이터를 암호화하여 인터넷 연결을 보안을 유지하는 표준 기술
 
 TLS(Transport Layer Security) : TLS는 가장 최신 기술로 더 강력한 버전의 SSL
 
-HTTPS(Hyper Text Protocol Secure) :  HTTPS는 웹사이트를 SSL/TLS 인증서로 보안하는 경우 URL 창에 표시
+HTTPS(Hyper Text Protocol Secure) :  HTTPS는 웹사이트를 SSL/TLS 인증서로 보안하는 경우 URL 창에 표시, SSL을 조합한 HTTP를 HTTPS(HTTP Secure) or HTTP over SSL이라고 부름.
+                                     HTTP 통신하는 소켓 부분을 SSL, TLS라는 프로토콜로 대체
+                                     HTTP는 원래 TCP와 직접 통신, HTTPS에서 HTTP는 SSL과 통신하고 SSL이 TCP와 통신.
+                                     HTTPS의 SSL에서는 공통키(대칭키) 암호화 방식과 공개키 암호화 방식을 혼합한 하이브리드 암호 시스템 사용.
+                                     공통키를 공개키 암호화 방식으로 교환한 다음에 다음부터의 통신은 공통키 암호를 사용하는 방식
+                                     통신할 때마다 암호화를 하면 많은 리소스를 사용하여 서버 한 대당 처리할 수 있는 리퀘스트의 수가 줄어듬
+                                    
+
+
