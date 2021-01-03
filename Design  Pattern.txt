@@ -1,0 +1,25 @@
+// reference : http://softwarepatrasche.blogspot.com/2016/04/blog-post.html
+// https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/DesignPattern
+
+유스케이스 다이어그램 (UML관련 추가 조사 필요)
+-      사용자와의 의사소통을 위해 만들어짐
+-      Actor, use case, association ( include, exclude ) + generalization
+
+싱글톤 패턴
+-      개요 : 클래스당 유일한 인스턴스를 제공해야 할 필요가 있을 경우 사용. Ex) word processor의 도구 탭 등..
+             커넥션 풀, 스레드 풀, 디바이스 설정 객체 등의 경우 여러 개의 인스턴스를 만들면 자원 낭비나 버그 발생 가능
+
+-      코드
+Public class Singleton {
+Private static Singleton uniqueInstance; // 유일한 인스턴스를 저장 -> static
+Private Singleton() { } // 생성자는 내부에서만 쓰임 -> private
+Public static synchronized Singleton getInstance() { // 해당 인스턴스를 리턴, 멀티 쓰레딩에 대비한 동기화 -> synchronized
+          If( uniqueInstance == null) { uniqueInstance = new Singleton(); } // 생성된 인스턴스가 없다면 첫 인스턴스 생성
+          Return uniqueInstance;
+} }
+
+MVC 패턴
+-      Model View Controller : 어플리케이션을 세가지 역할로 구분한 개발 방법론
+-      Controller : 사용자가 컨트롤러 클래스를 통해 모델 클래스를 조작. ( manipulate )
+-      Model : 모델 클래스는 데이터베이스나 파일과 같은 데이터 소스를 제어한 후 결과를 리턴. ( update )
+-      View : 컨트롤러는 모델로부터 리턴받은 결과를 뷰 클래스에 반영. ( see )
