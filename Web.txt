@@ -1,0 +1,11 @@
+// reference : http://softwarepatrasche.blogspot.com/2016/04/blog-post.html
+// https://victorydntmd.tistory.com/121
+
+웹 어플리케이션 구조 : 웹 브라우저 - 웹 서버 - 웹 어플리케이션 서버 - 데이터베이스
+
+웹 서버 : 정적 컨텐츠(html, css, js) 제공 서버(Apache, Nginx)
+웹 어플리케이션 서버(WAS) : DB 조회나, 어떤 로직 처리해야 하는 동적 컨텐츠 제공(Tomcat)
+
+CGI(Common Gateway interface) : 웹 서버에서 각 브라우저의 요청마다 프로세스 생성하여 처리 -> 메모리 부하
+
+WAS(Web Application Server) : 웹 서버가 직접 프로그램 처리하지 않고, 웹 어플리케이션에 넘겨줌. 여러 명의 사용자가 동일 페이지 요청 시 오직 하나의 프로세스만 생성 후, 각 사용자에게 쓰레드 할당, 전체적 성능 향상
