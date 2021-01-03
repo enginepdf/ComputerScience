@@ -1,0 +1,17 @@
+// reference : https://jojoldu.tistory.com/243
+// https://ra2kstar.tistory.com/96
+// https://yurimkoo.github.io/db/2020/03/14/db-index.html
+
+
+MySQL은 첫 번째 열부터 전체 테이블에 걸쳐서 연관된 열을 검색하기 때문에 테이블이 크면 클 수록 비용이 엄청나게 늘어남
+특정 컬럼 값을 가지고 있는 열을 빠르게  찾음(Where 절에서 효과)
+
+인덱스는 결국 지정한 컬럼들을 기준으로 메모리 영역에 일종의 목차를 생성하는 것
+insert, update, delete (Command)의 성능을 희생하고 대신 select (Query)의 성능을 향상
+update, delete 행위가 느린 것이지, update, delete를 하기 위해 해당 데이터를 조회하는 것은 인덱스가 있으면 빠르게 조회
+
+
+카디널리티(Cardinality) : 높을수록 적합(한 컬럼이 갖고 있는 값의 중복 정도가 낮을수록 좋음)
+선택도(Selectivity)	: 낮을수록 적합 (5~10% 적정)
+활용도 : 높을수록 적합(컬럼의 각 값들의 평균 row 수 / 테이블의 총 row 수 * 100)
+중복도 : 없을수록 적합
