@@ -1,0 +1,42 @@
+reference : https://ko.wikipedia.org/wiki/HTTP/2
+https://goldfishhead.tistory.com/26
+https://ykarma1996.tistory.com/86
+
+
+1. HTTP/0.9
+
+요청이 단일 라인으로 구성, 가능 메서드는 GET이 유일
+
+2. HTTP/1.0
+
+요청에 버전 정보가 붙어서 전송되기 시작
+응답 시작 부분에 상태 코드 추가
+모든 요청과 응답에 헤더 개념 추가(확장성 증가, 다른 타입 문서 전달 가능 등)
+
+3. HTTP/1.1
+
+커넥션의 재사용 가능(기존 연결에 대한 handshake 생략 가능)
+파이프라이닝, 이전 요청에 대한 응답이 완전히 전송되기 전에 다음 전송을 가능케 함. 레이턴시 낮춤
+언어, 인코딩 타입 등을 포함한 컨텐츠 전송
+동일 IP 주소에 다른 도메인을 호스트 하는 기능 가능(HOST header)
+연결당 하나의 요청과 응답 처리(동시 전송 문제, 다수 리소스 처리하기에 속도, 성능 이슈 존재)
+HOL(Head Of Line) Blocking(특정 응답 지연)
+RTT(Round Trip Time) 증가(양방향 지연)
+헤드가 크다(특히 쿠키)
+
+4. HTTP/2.0
+
+SDPY 기반 
+클라이언트와 서버가 HTTP 1.1, 2.0 혹은 다른 비 HTTP 프로토콜 사용을 협상할 수 있는 메커니즘 구현
+HTTP 1.1과 호환성 유지
+HTTP 헤더 데이터 압축 : 지연 시간 감소(HPACK 압축 방식)
+서버 푸시 기술 : 지연 시간 감소(HTML 문서 상에 필요한 리소스를 클라이언트 요청 없이 보낼 수 있음)
+요청을 HTTP 파이프라인으로 처리 : 지연 시간 감소
+HTTP 1.x의 HOL blocking 문제 해결 : 지연 시간 감소
+TCP 연결 하나로 여러 요청을 다중화 하여 처리(Multiplexed Streams) : 지연 시간 감소  --> HOL Blocking 발생하지 않음
+--> HTTP 1.1에 비해 속도 향상
+
+5. HTTP/3.0
+
+QUIC(Quick UDP Internet Connectino) 사용
+새로운 연결에 대해 handshake로 인한 지연, 패킷 손실이 다른 스트림에 주는 영향, 패킷 손실로 인한 지연으로부터 자유로워짐
