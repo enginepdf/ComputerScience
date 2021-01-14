@@ -20,7 +20,7 @@ https://ykarma1996.tistory.com/86
 언어, 인코딩 타입 등을 포함한 컨텐츠 전송
 동일 IP 주소에 다른 도메인을 호스트 하는 기능 가능(HOST header)
 연결당 하나의 요청과 응답 처리(동시 전송 문제, 다수 리소스 처리하기에 속도, 성능 이슈 존재)
-HOL(Head Of Line) Blocking(특정 응답 지연)
+HOLB(Head Of Line Blocking, 특정 응답 지연)
 RTT(Round Trip Time) 증가(양방향 지연)
 헤드가 크다(특히 쿠키)
 
@@ -32,11 +32,18 @@ HTTP 1.1과 호환성 유지
 HTTP 헤더 데이터 압축 : 지연 시간 감소(HPACK 압축 방식)
 서버 푸시 기술 : 지연 시간 감소(HTML 문서 상에 필요한 리소스를 클라이언트 요청 없이 보낼 수 있음)
 요청을 HTTP 파이프라인으로 처리 : 지연 시간 감소
-HTTP 1.x의 HOL blocking 문제 해결 : 지연 시간 감소
+HTTP 1.x의 HOL Blocking 문제 해결 : 지연 시간 감소
 TCP 연결 하나로 여러 요청을 다중화 하여 처리(Multiplexed Streams) : 지연 시간 감소  --> HOL Blocking 발생하지 않음
 --> HTTP 1.1에 비해 속도 향상
 
 5. HTTP/3.0
 
 QUIC(Quick UDP Internet Connectino) 사용
+
+암호화가 프로토콜의 일부 기능으로 포함
+스트림 연결과 암호화 스펙 등을 포함한 모든 handshake가 단일 요청/응답으로 끄탄ㅁ
+패킷의 개별적 암호화, 다른 데이터 부분의 패킷  기다릴 필요 없음
+통신이 멀티플렉싱 되어 HOLB 극복
+QUIC는 운영체제 커널과 독립적으로 응용 프로그램 공간 내에서 구현, 데이터 이동에 따른 컨텍스트 전환에 의한 오버헤드가 없어짐
+Source Address와 무관하게 서버에 대한 연결을 고유하게 식별하는 연결 식별자가 포함. IP주소가 변결되더라도 커넥션 유지 가능
 새로운 연결에 대해 handshake로 인한 지연, 패킷 손실이 다른 스트림에 주는 영향, 패킷 손실로 인한 지연으로부터 자유로워짐
