@@ -1,10 +1,35 @@
 // reference : http://softwarepatrasche.blogspot.com/2016/04/blog-post.html
 // https://kkamagistory.tistory.com/205
 // https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Network/OSI%207%20%EA%B3%84%EC%B8%B5.md
-// https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Network/OSI%207%20%EA%B3%84%EC%B8%B5.md
+// http://www.ktword.co.kr/abbr_view.php?m_temp1=379
+// https://velog.io/@hidaehyunlee/%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80-%EC%A0%84%EB%8B%AC%EB%90%98%EB%8A%94-%EC%9B%90%EB%A6%AC-OSI-7%EA%B3%84%EC%B8%B5-%EB%AA%A8%EB%8D%B8%EA%B3%BC-TCPIP-%EB%AA%A8%EB%8D%B8
+// https://sigmasabjil.tistory.com/37
+
+* 프로토콜의 필요성
+
+   한 클라이언트에서 발생한 데이터가 상대방 컴퓨터 혹은 서버로 전달되기 위해서는 표준화 된 어떠한 약속 혹은 절차를 따라야 함.
+   보내는 족에서는 데이터를 안전하고, 정확하고, 신속하게 규격화하는 방법이 필요,
+   받는 쪽에서는 그 데이터를 안전, 정확, 신속하게 해석하는 방법이 필요 --> 이런 기술적 약속을 프로토콜이라고 함
+   (컴퓨터 간 데이터를 주고 받을 대 에러 발생하지 않도록 알맞게 나누어 전송, 이를 수신하여 다시 기존 정보를 변환)
 
 
-         계층 1 : 물리 계층(Physical Layer)
+* 계층 구조
+
+   네트워크 상에서 여러 대의 컴퓨터가 데이터 주고 받으려면 이들을 서로 연동할 수 있도록 표준화된 인터페이스 지원해야 함.
+   OSI 7모델과 TCP/IP 모델 모두 계층 구조를  갖고 있음
+   계층 구조를 사용하는 목적은 분할 정복(복잡한 문제를 나누어 쉽게 해결)
+   계층 구조는 위, 아래 층으로만 이동하고 단계를 건너뛸 수 없으며, 다음 단계로 넘어가려면 이전 계층이 전제 조건
+
+
+* 통신 분야에서의 캡슐화
+
+   OSI 계층 모델에서 사용자 데이터가 각 계층을  지나면서 하위 계층은 상위 계층으로부터 온 정보를 데이터로 취급.
+   자신의 계층 특성을 담은 제어 정보(주소, 에러 제어 등)를 헤더화시켜, 이를 붙이는 일련의 과정
+
+
+* OSI 7 계층 모델
+
+         계층 1 : 물리 계층(Physical Layer) - 비트(캡슐화)
             실제 장치 연결 위한 전기적, 물리적 세부 사항 정의
             통신 케이블로 데이터 전송하는 역할
             핀들의 배치, 전압, 전선의 명세
@@ -14,7 +39,7 @@
             케이블, 허브, 리피터 / 비트 / Ethernet
 
 
-         계층 2 : 데이터 링크 계층(Data Link Layer)
+         계층 2 : 데이터 링크 계층(Data Link Layer) - 프레임(캡슐화)
             네트워크 위의 개체들(인접 기기) 간 데이터 전달.
             물리 계층에서 발생할 수 있는 오류 찾고 수정하는 데 필요한 기능적, 절차적 수단 제공
             MAC 주소를 이용해 통신
@@ -22,13 +47,13 @@
             스위치 / 프레임 / MAC, PPP
 
 
-         계층 3 : 네트워크 계층(Network Layer)
+         계층 3 : 네트워크 계층(Network Layer) - 패킷(데이터그램)(캡슐화)
             여러 개의 노드 거칠 때마다 경로 찾아주는 역할, 송신 노드에서 수신 노드로 어떤 경로를 정보를 전달할 것인지 결정.
             라우터를 통해 이동할 경로를 선택하여 IP 주소 지정, 해당 경로에 따라 패킷 전달
             라우팅, 흐름 제어, segmentation/desegmentation, 오류 제어, internetworking 등 수행
             L3스위치, 라우터 / 패킷 & 데이터그램 / IP, ICMP, IGMP
 
-         계층 4 : 전송 계층(Transport Layer)
+         계층 4 : 전송 계층(Transport Layer) - 세그먼트(캡슐화)
             양 끝단의 사용자들이 신뢰성 있는 데이터를 주고 받을 수 있도록 해주어, 상위 계층들이 데이터 전달의 유효성이나 효율성 생각하지 않도록 해줌
             패킷들의 전송이 유효한지 확인하고 전송 실패한 패킷들을 다시 전송한다는 뜻
             TCP, UDP 프로토콜을 통해 통신 활성화. 포트를 열어두고, 프로그램들이 전송 할 수 있도록 제공
@@ -49,7 +74,7 @@
             데이터 표현에 대한 독립성 제공
             SMB, APP, MPEG, JPEG
 
-         계층 7 : 응용 계층(Application Layer)
+         계층 7 : 응용 계층(Application Layer) - 사용자 데이터(메시지)(캡슐화)
             최종 목적지로 응용 프로세스와 직접 관계하여 일반적 응용 서비스 수행.
             일반적 응용 서비스는 관련된 응용 프로세스들의 사이의 전환 제공
             사용자 인터페이스, 전자우편, 데이터베이스 관리 등의 서비스 제공
