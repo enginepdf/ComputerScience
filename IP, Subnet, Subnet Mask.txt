@@ -1,0 +1,11 @@
+* reference 
+https://engkimbs.tistory.com/621?category=688997
+https://hyoje420.tistory.com/31
+https://engkimbs.tistory.com/622
+https://hyoje420.tistory.com/32
+https://limkydev.tistory.com/m/166
+
+IP(Internet Protocol)
+
+기기 간 네트워크 통신하는 방식
+IP에서 IP 기기의 주소를 나타내는 것이 IP 주소(데이터를 정확히 송수신하기 위함)
