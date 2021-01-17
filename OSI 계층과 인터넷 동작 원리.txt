@@ -94,7 +94,7 @@
             응용 간 논리적 연결 확립
             TCP/IP 세션을 만들고 없앰
             세션 구별번호의 추가
-            Transport Layer에서 정의된 포트를 사용해서 소켓, 세션 만듬
+            Transport Layer에서 정의된 포트를 사용해서 소켓, 세션 만듬(OSI layer 5 'session layer' uses the ports defined in layer 4 to create sockets and sessions between communicating devices/programs/etc.)
       
          계층 4 : 전송 계층(Transport Layer) - Segment(캡슐화), (TCP(DATA))
 
@@ -109,7 +109,7 @@
             TCP, UDP 프로토콜을 통해 통신 활성화. 포트를 열어두고, 프로그램들이 전송 할 수 있도록 제공
             TCP(신뢰성, 연결 지향적), UDP(비신뢰성, 비연결성, 실시간)
 
-            Port(0~65535) - 어떤 프로그램으로 가야할지 지정
+            Port(0~65535) - 어떤 프로그램으로 가야 할지 지정
 
          계층 3 : 네트워크 계층(Network Layer) - Packet(데이터그램)(캡슐화), IP((TCP(DATA)))
 
