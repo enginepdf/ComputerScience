@@ -1,6 +1,8 @@
 // reference : https://inyongs.tistory.com/61
 
-
+TCP request msg with Seq:1, TCP payload:2byte from Client to Sserver
+TCP response msg with ACK:1+2 from Server to Client
+next seq num Client is going to send is 3
 
 - Frame
 
@@ -63,3 +65,7 @@
           Window Size: RWIN이라고도 함. 연속해서 TCP 패킷 수신 위한 수신 버퍼
           Checksum : TCP 헤더와 세그먼트의 내용 체크
           SEQ/ACK analysis : 전문가 기능 등에 의해 와이어샤크가 추가한 헤더는 []에 표시
+
+      - HTTP 
+
+          Connection : keep-alive  // HTTP는 persistent connection
