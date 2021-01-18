@@ -17,17 +17,49 @@ TCP/IP 계층
 -      Layer 1. Physical Layer ( OSI : physical / Ethernet ) : 이더넷 카드와 같은 하드웨어를 말함.
 
 
+        기본 헤더 : 20 bytes. IP 주소 + 포트 번호 = 소켓 번호(양쪽 호스트  내 종단 프로세스 식별)
+        Source Port : 출발지의 프로세스가 포트 번호로 나타남(포트 번호로 애플리케이션 지정). 16 bits
+        Destination Port : 목적지의 프로세스가 포트 번호로 나타남. 16 bits
+        Stream index : 와이어샤크에서 TCP 연결을 추적하거나 분석하기 쉽게 하기 위해 TCP 연결 시작부터 종료까지를 하나의 TCP 스트림으로 해서 패킷에 등장한 순번으로 스트림 번호 붙여 분석
+        Sequence Number : 현재 송신하고 있는 TCP 세그먼트의 위치가 숫자로 나타남
+                          32 bits 필드로 실제 데이터 첫 번째 바이트에 부여된 번호. 2^32 bytes 크기의 송신 데이터에 순서화된 일련번호 붙일 수 있음
+                          TCP 연결 설정 동안 난수발생기를 이용하여 초기 순서 번호(ISN, Initial Sequence Number) 생성. TCP가 양방향이므로 각 방향마다 다른 ISN 번호 사용
+        Next Sequence Number : 현재 시퀀스 번호에 송신할 TCP 데이터 크기를 더한 값이 다음 시퀀스 번호가 됨
+        Acknowledgement Number : 수신한 세그먼트의 확인 응답을 위한 32 bits 필드. 수신한 TCP 세그먼트의 위치가 번호로 표시(연결 시 초기 시퀀스 번호+1, 수신 세그먼트의 바이트 수가 더해져 감) 
+                                 수신하기를 기대하는 다음 바이트 번호 = 마지막 수신 성공 순서 번호 + 1
+        Header length : TCP 헤더의 크기. 가변 길이지만 기본값 20바이트
+        Flags : 통신 제어
+            Reserved
+            Nonce : ECN-Echo와 함께 패킷 혼잡 제어
+            Congestion WIndow Reduced : 네트워크 혼잡 시 한 번에 보내는 데이터 크기 작게 함
+            Urgent : 긴급 포인터 플래그. 긴급 데이터 사용 시
+            Acknowledgement : ACK 플래그. On이 되면 확인 응답 번호 유효화
+            Push : PSH 플래그. On이 되면 그때까지 수신 버퍼에 쌓인 데이터를 모아 프로그램에 넘기는 푸시 기능이 유효화(효율이 좋은 통신을 위함)
+             
+        Window Size: RWIN이라고도 함. 연속해서 TCP 패킷 수신 위한 수신 버퍼
+        Checksum : TCP 헤더와 세그먼트의 내용 체크
+        SEQ/ACK analysis : 전문가 기능 등에 의해 와이어샤크가 추가한 헤더는 []에 표시
 
-*** 3-way handshake
+
 
 SYN(SYnchronize sequence Number)
 ACK(ACKnowledgement)
 
-* 연결 성립(Connection Establishment)
+1. 연결 성립(Connection Establishment), 3-way handshake
 
-클라이언트는 서버에 접속 요청하는 SYN(a) 패킷(헤더 - 수신처의 인터넷 주소와 순서, 데이터, 테일러 - 에러 정보)을 보낸다.
-서버는 클라이언트의 요청인 SYN(a)을 받고 클라이언트에게 요청을 수락한다는 ACK(a+1)와 SYN(b)이 설정된 패킷을 발송(클라이언트가 서버 응답을 체크하기 위한 SYN(b))
-클라이언트는 서버의 수락 응답인 ACK(a+1)와 SYN(b) 패킷을 받고 ACK(b+1)를 서버로 보내면 연결이 성립(establish)된다.
+    클라이언트는 서버에 접속 요청하는 SYN(a) 패킷(헤더 - 수신처의 인터넷 주소와 순서, 데이터, 테일러 - 에러 정보)을 보낸다. 응답을 기다리는 SYN_SENT 상태
+    서버는 클라이언트의 요청인 SYN(a)을 받고 클라이언트에게 요청을 수락한다는 ACK(a+1)와 SYN(b)이 설정된 패킷을 발송(클라이언트가 서버 응답을 체크하기 위한 SYN(b)). SYN_RECEIVED 상태가 됨
+    클라이언트는 서버로부터 SYN(b)와 ACK(a+1) 패킷을 받고, ACK(b+1)를 서버로 보내면 연결 성립되어 두 호스트는 ESTABLISHED 상태가 됨
+
+2. 데이터 주고 받음
+
+3. 연결 종료/해제, 4-way handshake
+
+    클라이언트는 연결을 종료하겠다는 FIN 플래그 보냄
+    서버는 확인 메시지로 ACK 보내고, 자신의 데이터를 모두 보낼 때까지 CLOSE_WAIT 상태
+    서버가 데이터를 모두 보내고 통신이 끝났으면 연결이 종료 되었다고 클라이언트에게 FIN 플래그 전송
+    클라이언트는 FIN 메시지를 확인했다는 메시지(ACK) 보내고 연결 종료
+
 
 
 
