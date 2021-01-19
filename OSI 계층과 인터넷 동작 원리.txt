@@ -7,6 +7,7 @@
 // http://www.ktword.co.kr/abbr_view.php?m_temp1=873
 // https://stackoverflow.com/questions/52775730/tcp-port-and-osi-model
 // https://m.blog.naver.com/chlalsdud61/220744988172
+// https://m.blog.naver.com/PostView.nhn?blogId=sung_mk1919&logNo=221177021021&proxyReferer=https:%2F%2Fwww.google.com%2F
 
 * 프로토콜의 필요성
 
