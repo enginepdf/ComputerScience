@@ -1,0 +1,6 @@
+reference : https://ko.wikipedia.org/wiki/%EC%9D%B4%EB%8D%94%EB%84%B7
+            https://namu.wiki/w/%EC%9D%B4%EB%8D%94%EB%84%B7
+
+인터넷은 소프트웨어를 포함한 개념
+이더넷은 컴퓨터 네트워크 기술의 하나. OSI모델의 물리 계층에서 신호와 배선, 데이터 링크 계층에서 MAC 패킷과 프로토콜의 형식 정식
+CSMA/CD(Carrier Sense Multiple Access with Collision Detection, 반송파 감지 다중 접속 및 충돌 탐지)기술 사용     
