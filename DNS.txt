@@ -30,3 +30,4 @@ http://www.naver.com/index.html : URL
 www.naver.com : Host name
 .com : Top-level Domain Name
 .naver.com : Second-level Domain Name
+
