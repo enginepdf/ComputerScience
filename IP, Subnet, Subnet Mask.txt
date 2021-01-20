@@ -10,6 +10,9 @@ https://www.quora.com/Can-we-use-IPs-that-start-with-192-or-10-or-172-as-a-Publi
 * IP(Internet Protocol) : 기기 간 네트워크 통신하는 방식
 
 IP에서 IP 기기의 주소를 나타내는 것이 IP 주소(데이터를 정확히 송수신하기 위함)
+데이터를 데이터그램(헤더, payload)에 캡슐화
+Ip 헤더가 발신자 IP주소, 수신자 IP주소, meta data 가짐
+라우터가 라우팅을 할 때 IP 헤더에 포함된 수신자 IP 주소 이용
 
 IPv4 : 32bit로 처리, 옥택당 2^8=256개의 수 나타냄, 총 2^32만큼 IP 할당 가능  ex) 192.168.0.1
 IPv6 : 128bit로 처리, 총 2^128만큼 IP 할당 가능, ex) 2001:0db8:0dad:0010:0000:0000:0000:0100
@@ -31,14 +34,14 @@ IPv6 : 128bit로 처리, 총 2^128만큼 IP 할당 가능, ex) 2001:0db8:0dad:00
     각 Network ID에서 첫번째 주소는 Network Address, 마지막 주소는 Broadcast로 쓰여 총 사용 가능한 IP 주소 갯수 - 2
     같은 네트워크에 있다는 것은 라우터를  통하지 않고도 통신할 수 있는 같은 Network ID를 가지는 망에 있다는 것을 뜻함
 
-  
+
     Class A : 10.0.0.0 ~ 10.255.255.255
 
     Class B : 172.16.0.0 ~ 172.31.255.255
 
     Class C : 192.168.0.0 ~ 192.168.255.255
 
-    -->Those private IP addresses is use only for LAN which can not communicate with internet until you do NAT(Network Address Transalation)
+    --> Those private IP addresses is use only for LAN which can not communicate with internet until you do NAT(Network Address Transalation)
 
 
 
