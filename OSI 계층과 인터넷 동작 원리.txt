@@ -98,8 +98,8 @@
             세션 구별번호의 추가
             Transport Layer에서 정의된 포트를 사용해서 소켓, 세션 만듬(OSI layer 5 'session layer' uses the ports defined in layer 4 to create sockets and sessions between communicating devices/programs/etc.)
       
-         계층 4 : 전송 계층(Transport Layer) - Segment(캡슐화), (TCP(DATA))
-
+         계층 4 : 전송 계층(Transport Layer) - Segment(캡슐화), (TCP(DATA))  --> 패킷 전달 순서가 달라도 재조립 가능해야 함(패킷 순서번호의 추가), TCP window size, TCP congestion control(부하가 심할 때 라우터가 패킷 버림)
+                                                                            TCP/IP illustrated
             End-to-end error control
             PDU : Segment(헤더에 포함)
             프로토콜 : TCP, UDP, ARP, RTP 
@@ -110,10 +110,10 @@
             패킷 순서번호의 추가, 주소 설정, 오류 및 흐름 제어,  다중화
             TCP, UDP 프로토콜을 통해 통신 활성화. 포트를 열어두고, 프로그램들이 전송 할 수 있도록 제공
             TCP(신뢰성, 연결 지향적), UDP(비신뢰성, 비연결성, 실시간)
+            UDP(순서 상관 없음, 방송 송출 등에 사용)  --> reliable UDP(rUDP)(신뢰성 추가)
+            포트 설정, Port(0~65535) - 어떤 프로그램으로 가야 할지 지정
 
-            Port(0~65535) - 어떤 프로그램으로 가야 할지 지정
-
-         계층 3 : 네트워크 계층(Network Layer) - Packet(데이터그램)(캡슐화), IP((TCP(DATA)))
+         계층 3 : 네트워크 계층(Network Layer) - Packet(데이터그램)(캡슐화), IP((TCP(DATA)))   --> IP 신뢰성/연결성/순서 보장 없음 -> 전송 계층의 필요성, LAN 간 연결(라우터 이용 통신), 스타링크(위성), TTL(Time To Live)
 
             Network addressing; routing or switching
             PDU : Packet(전송 데이터는 패킷 단위로 분할하여 전송 후 다시 합쳐짐)
@@ -127,14 +127,14 @@
             라우팅, 흐름 제어, segmentation/desegmentation, 오류 제어, internetworking 등 수행
             * 데이터그램 : 패킷 교환에서 각각 독립적으로 취급되는 패킷. 헤더와 데이터 부분으로 구성
 
-         계층 2 : 데이터 링크 계층(Data Link Layer) - Frame(캡슐화), Ethernet(IP((TCP(DATA))))
+         계층 2 : 데이터 링크 계층(Data Link Layer) - Frame(캡슐화), Ethernet(IP((TCP(DATA))))   - ring network, switch,    wireshark mac address filter -  물리 계층 에러 확인, LAN 범위에서 장치 간 통신 위함
 
             Error detection, flow control on physical link
             PDU : Frame(시스템 간 오류 없는 데이터 전송을 위해 팻킷을 프레임으로 구성), 3계층에서 정보를 받아 주소와 제어정보를 헤더와 테일에 추가, 노드 대 노드 전달 감독
             프로토콜 : 이더넷, MAC, PPP, ATM, LAN, Wifi
             장비 : 브릿지, 스위치
             네트워크 위의 개체들(인접 기기) 간 데이터 전달.
-            물리 계층에서 발생할 수 있는 오류 찾고 수정하는 데 필요한 기능적, 절차적 수단 제공(CRC(Cyclic Reduncdancy Check) 기반의 오류 제어와 흐름 제어 필요)
+            물리 계층에서 발생할 수 있는 오류 찾고(정전기 등의 이유) 수정하는 데 필요한 기능적, 절차적 수단 제공(CRC(Cyclic Reduncdancy Check) 기반의 오류 제어와 흐름 제어 필요)
             MAC 주소를 이용해 통신(주소값을 물리적으로 할당)
             프레임 순서번호의 추가
             Frame에 MAC 주소를 부여하고 에러 검출, 재전송, 흐름 제어 진행
@@ -144,11 +144,11 @@
             RARP(Reverse Address Resolution Protocol) : MAC 주소를 IP 주소로 변환
 
 
-         계층 1 : 물리 계층(Physical Layer) - Bit(캡슐화)
+         계층 1 : 물리 계층(Physical Layer) - Bit(캡슐화)   --> Ethernet Cable(CSMA/CD), 구리선(양끝), 8 가닥 선, submarine cable, 충돌
 
             Bit stream: physical medium, method of representing bits
             PDU : 비트(bit)
-            프로토콜 : Modem, Cable, Fiber, RS-232C
+            프로토콜 : Modem, Cable, Fiber, RS-232C, Wifi  
             장비 : 허브, 리피터, 케이블
             실제 장치 연결 위한 전기적, 물리적 세부 사항 정의
             통신 케이블로 데이터 전송하는 역할(디지털 비트를 전기, 무선 또는 광신호로 변환)
