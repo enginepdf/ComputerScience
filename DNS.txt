@@ -35,3 +35,9 @@ cat /etc/hosts  // current computer host name
 
 cat /etc/resolv.conf    // DNS information and host name
 
+
+* Root DNS 
+
+    com, org, net 등과 같은 상위 레벨 도메인과 모든 국가의 상위 레벨 도메인에 대한 관리를 담당하는 DNS 서버. 트래픽 집중. 
+    트리 구조로 요청에 대해 하위 트리로 연결시켜줌
+
