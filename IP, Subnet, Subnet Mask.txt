@@ -4,6 +4,7 @@ https://hyoje420.tistory.com/31
 https://engkimbs.tistory.com/622
 https://hyoje420.tistory.com/32
 https://limkydev.tistory.com/m/166
+https://www.quora.com/Can-we-use-IPs-that-start-with-192-or-10-or-172-as-a-Public-IP-on-the-internet
 
 
 * IP(Internet Protocol) : 기기 간 네트워크 통신하는 방식
@@ -29,6 +30,15 @@ IPv6 : 128bit로 처리, 총 2^128만큼 IP 할당 가능, ex) 2001:0db8:0dad:00
     인터넷 공유기는 가상 IP 주소를 생성(NAT 서비스, 192.168.xxx.xxx)하여 각 컴퓨터 등에게 자동 할당(DHCP)하는 역할 수행
     각 Network ID에서 첫번째 주소는 Network Address, 마지막 주소는 Broadcast로 쓰여 총 사용 가능한 IP 주소 갯수 - 2
     같은 네트워크에 있다는 것은 라우터를  통하지 않고도 통신할 수 있는 같은 Network ID를 가지는 망에 있다는 것을 뜻함
+
+  
+    Class A : 10.0.0.0 ~ 10.255.255.255
+
+    Class B : 172.16.0.0 ~ 172.31.255.255
+
+    Class C : 192.168.0.0 ~ 192.168.255.255
+
+    -->Those private IP addresses is use only for LAN which can not communicate with internet until you do NAT(Network Address Transalation)
 
 
 
