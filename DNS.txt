@@ -1,4 +1,5 @@
 // reference : https://ijbgo.tistory.com/27?category=723618
+https://leoh0.github.io/post/2016-05-17-mac-os-x-nslookup/
 
 DNS(Domain Name System)
 
@@ -34,6 +35,10 @@ www.naver.com : Host name
 cat /etc/hosts  // current computer host name
 
 cat /etc/resolv.conf    // DNS information and host name
+
+nslookup <HOST Name>
+
+scutil --dns
 
 
 * Root DNS 
