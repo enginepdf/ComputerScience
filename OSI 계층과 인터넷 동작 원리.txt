@@ -113,7 +113,9 @@
             TCP, UDP 프로토콜을 통해 통신 활성화. 포트를 열어두고, 프로그램들이 전송 할 수 있도록 제공
             TCP(신뢰성, 연결 지향적), UDP(비신뢰성, 비연결성, 실시간)
             UDP(순서 상관 없음, 방송 송출 등에 사용)  --> reliable UDP(rUDP)(신뢰성 추가)
-            포트 설정, Port(0~65535) - 어떤 프로그램으로 가야 할지 지정
+            TCP 헤더 중 하나로 포트 설정. 기존 Upper Header와 data는 TCP payload가 됨. Port(0~65535) - 어떤 프로그램으로 가야 할지 지정
+            TCP일 경우 4계층에서 data segmentation. UDP일 경우 3계층에서 fragmentation(MTU 단위로 데이터 나눔)
+            데이터 조각 송신할 때마다 세어둔 바이트 값을 TCP 헤더에 기록(Sequence Number) -> Seq, ACK로 패킷 누락 확인
 
          계층 3 : 네트워크 계층(Network Layer) - Packet(데이터그램)(캡슐화), IP((TCP(DATA)))   --> IP 신뢰성/연결성/순서 보장 없음 -> 전송 계층의 필요성, LAN 간 연결(라우터 이용 통신), 스타링크(위성), TTL(Time To Live)
 
@@ -127,7 +129,10 @@
             데이터를 다른 네트워크를 통해 전달함으로써 인터넷이 가능하게 만드는 계층
             송수신 주소, 가상 회선 번호 추가
             라우팅, 흐름 제어, segmentation/desegmentation, 오류 제어, internetworking 등 수행
+            IP Header(송신 장비, 수신 장비의 IP 정보) + IP Payload(TCP Header, TCP Payload)
+
             * 데이터그램 : 패킷 교환에서 각각 독립적으로 취급되는 패킷. 헤더와 데이터 부분으로 구성
+
 
          계층 2 : 데이터 링크 계층(Data Link Layer) - Frame(캡슐화), Ethernet(IP((TCP(DATA))))   - ring network, switch,    wireshark mac address filter -  물리 계층 에러 확인, LAN 범위에서 장치 간 통신 위함
 
@@ -140,6 +145,7 @@
             MAC 주소를 이용해 통신(주소값을 물리적으로 할당)
             프레임 순서번호의 추가
             Frame에 MAC 주소를 부여하고 에러 검출, 재전송, 흐름 제어 진행
+            Ethernet Header(자신과 상대방의 MAC 주소, 거쳐갈 라우터의 MAC 주소) + Tail(CRC, Cyclic Reduncdancy Check, 순환 중복 검사. 특수한 알고리즘을 송신자에서 CRC로 만들어 수신자가 만든 CRC와 비교하여 네트워크를 경유하여 전송된 데이터의 무결성 검사)
             
             스위치(flooding, learning, forwarding, aging, filtering)
             ARP(Address Resolution Protocol) : IP 주소를 MAC 주소로 변환
@@ -159,6 +165,7 @@
             물리적 정보 전달 매개체에 대한 연결의 성립 및 종료. 여러 사용자들 간의 통신 자원을 효율적 분배하는 데 관여
             물리 계층에서 데이터 교환하는 방식은 회선 교환, 메시지 교환, 패킷 교환 방식
             에러 제어 비트 추가
+            2진 데이터 값이 전기 신호 2진수 값인 0, 1로 변환되어 라우터 혹은 목적지에 도달하게 전파
 
 * 허브
 
