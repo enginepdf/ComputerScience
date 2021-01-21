@@ -9,6 +9,7 @@
 // https://m.blog.naver.com/chlalsdud61/220744988172
 // https://m.blog.naver.com/PostView.nhn?blogId=sung_mk1919&logNo=221177021021&proxyReferer=https:%2F%2Fwww.google.com%2F
 // https://parksb.github.io/article/36.html
+// https://ko.wikipedia.org/wiki/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_%ED%8C%A8%ED%82%B7
 
 
 * 프로토콜의 필요성
@@ -51,6 +52,10 @@
 
    PDU(Process Data Unit) : 각 계층에서 전송되는 단위, PDU=SDU(Service Data Unit, 상위 계층에서 전달받은 데이터) + PCI(Protocol Control Unit, 헤더 정보, 발신/수신지 주소, 오류검출용 FCS 등)
                             2계층 - Frame, 3계층 - Packet, 4계층 - Segment
+   
+   Packet : 패킷 방식의 컴퓨터 네트워크가 전달하는 데이터의 형식화된 블록. 제어 정보 + 사용자 데이터(Payload)
+            패킷을 지원하지 않는 컴퓨터 통신 연결을 단순히 바이트, 문자열, 비트를 독립적으로 연속하여 데이터 전송
+            데이터가 패킷 형식으로 바뀔 때, 네트워크는 장문 메시지를 더 효과적이고 신뢰성 있게 보낼 수 있음
 
 
    * 패킷(데이터) 송수신 전송 흐름
