@@ -130,8 +130,12 @@
             TCP(신뢰성, 연결 지향적), UDP(비신뢰성, 비연결성, 실시간)
             UDP(순서 상관 없음, 방송 송출 등에 사용)  --> reliable UDP(rUDP)(신뢰성 추가)
             TCP 헤더 중 하나로 포트(Source Port) 설정. 기존 Upper Header와 data는 TCP payload가 됨. Port(0~65535) - 어떤 프로그램으로 가야 할지 지정
-            TCP일 경우 4계층에서 data segmentation. UDP일 경우 3계층에서 fragmentation(MTU(Maximum Transmission Unit) 단위로 데이터 나눔)
-            데이터 조각 송신할 때마다 세어둔 바이트 값을 TCP 헤더에 기록(Sequence Number) -> Seq, ACK로 패킷 누락 확인
+            TCP일 경우 4계층에서 data segmentation. UDP일 경우 3계층에서 fragmentation(MTU(Maximum Transmission Unit) 단위로 데이터 나눔) - UDP는 비연결형이라 4계층에서 분할 및 재조립이 일어나지 않고 송/수진 장비의  3계층인 IP Layer와 망에서의 3계층 장비인 라우터에서 일어남
+               MTU는 TCP Header +  Payload(Upper Data) 포함하는 데이터 최대 길이이며, 실질적 Payload의 길이는 MSS(Maximum Segment Size)
+               프로토콜 스택은 송신용 버퍼 메모리 영역에 데이터 값이 MSS에 근접했을 때 데이터 송신
+               버퍼 메모리 영역에 데이터가 MSS 기준에 근접하지 못할 경우 hang 상태를 유지하는 것이 아니라 특정 시간이 지나면 데이터를 그대로 전송(OS가 결정)
+
+            데이터 조각 송신할 때마다 세어둔 바이트 값을 TCP 헤더에 기록(Sequence Number - 분할된 데이터들의 재조립을 위해 본체 데이터의 특정 부분을 나타내는 숫자) -> Seq, ACK로 패킷 누락 확인
 
          계층 3 : 네트워크 계층(Network Layer) - Packet(데이터그램)(캡슐화), IP((TCP(DATA)))   --> IP 신뢰성/연결성/순서 보장 없음 -> 전송 계층의 필요성, LAN 간 연결(라우터 이용 통신), 스타링크(위성), TTL(Time To Live)
 
@@ -249,4 +253,11 @@
    동일 VLAN에 소속된 장비들끼리 통신할 때는 라우터 필요 없겠지만, VLAN이 다른 장비들 간의 통신은 L3 스위치, 라우터 등의 L3 장비 통해야만 가능
    VLAN 간의 라우팅 위해 일반적인 라우터 사용하여 라우터에서 병목현상 발생하여 전체 네트워크 성능 저하시킬 수 있어 L3 스위치 사용
 
+   AP(Access Point)들은 스위치에 연결. 스위치들은 게이트웨이 라우터와 연결. 라우터는 SK, KT와 같은 ISP(Internet Service Provider)의 네트워크에 연결
 
+
+* Socket
+
+   프로토콜 스택(계층화된 구조로 모여 있는 프로토콜들의 집합)은 내부에 메모리 영역을 갖고 있어, 그곳에 통신 동작을 제어하기 위한 제어 정보(통신 상대의 IP 주소, 포트 번호, 통신 동작의 진행 상태 등)를 기록. 이 제어 정보가 기록되어 있는 메모리 영역을 Socket이라고 함
+   프로토콜 스택은 이 제어정보(소켓)를 참조하면서 동작
+   소켓을 만든다는 것은 제어 정보를 추가하고 상태를 기록, 송수신 데이터를 일시적으로 저장하는 버퍼 메모리를 준비하는 등 '통신을 준비하는 작업'
