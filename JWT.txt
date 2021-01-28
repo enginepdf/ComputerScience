@@ -50,17 +50,31 @@ HMAC-SHA256(
 
 - JWT 인증 과정
 
-사용자 로그인
-서버에서 계정 정보 읽어 사용자 확인 후 사용자 고유 ID 부여 후, 기타 정보와 함께 Payload에 넣음
-JWT 토큰의 유효기간/옵션 설정, 암호화할 Secret Key를 이용해 액세스 토큰 발급
-사용자는 액세스 토큰을 받아 저장 후(쿠키, local storage) 인증이 필요한 요청마다 토큰을 헤더에 실어 보냄
-서버에서는 해당 토큰의 Signature를 Secret key로 복호화 후, 조작 여부, 유효기간 확인
-검증 완료 시 요청 데이터 보내줌
+    - 사용자 로그인
+        POST /oauth2/token?
+        Content-type: application/x-www-form-urlencoded
+        grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=eyJhb...
+
+
+    - 서버에서 계정 정보 읽어 사용자 확인 후 사용자 고유 ID 부여 후, 기타 정보와 함께 Payload에 넣음
+      JWT 토큰의 유효기간/옵션 설정, 암호화할 Secret Key를 이용해 액세스 토큰 발급
+        {
+        "access_token": "eyJhb...",
+        "token_type": "Bearer",
+        "expires_in": 3600
+        }
+
+    - 사용자는 액세스 토큰을 받아 저장 후(쿠키, local storage) 인증이 필요한 요청마다 토큰을 헤더에 실어 보냄
+        Header > Authorization: Bearer eyJhbGci...<snip>...yu5CSpyHI
+
+    - 서버에서는 해당 토큰의 Signature를 Secret key로 복호화 후, 조작 여부, 유효기간 확인
+
+    - 검증 완료 시 요청 데이터 보내줌
 
 - 특징
 
 세션/쿠키는 별도 저장소 관리 필요하지만 JWT는 발급 후 검증만 하면 되어 추가 저장소 필요 없다.(Stateless 서버를 유지 보수하는데 유리)
-확장성이 뛰어남
+확장성이 뛰어남 -> 세션의 경우 로드밸런싱으로 세션을 발급 받지 않은 서버에 접속 시 로그인 상태가 아니게 됨
 발급된 JWT 삭제 불가(세션은 필요시 삭제 가능)
 토큰은 탈취 시 유효 기간 종료 전까지 악의적 사용 가능 
     -> Refresh Token 사용
