@@ -1,0 +1,66 @@
+* reference 
+
+https://velog.io/@sooonding/%EC%84%B8%EC%85%98%EC%BF%A0%ED%82%A4-JWT
+https://yonghyunlee.gitlab.io/node/jwt/
+https://velog.io/@stampid/%EC%BF%A0%ED%82%A4-%EC%84%B8%EC%85%98-%EA%B7%B8%EB%A6%AC%EA%B3%A0-JWT
+https://ko.wikipedia.org/wiki/JSON_%EC%9B%B9_%ED%86%A0%ED%81%B0
+https://jwt.io/
+
+
+* JWT(JSON Web Token)
+
+const token = base64urlEncoding(header) + '.' + base64urlEncoding(payload) + '.' + base64urlEncoding(signature)
+
+Header와 Payload는 누구나 디코딩하여 내용 확인 가능(https://jwt.io/) -> 유저 비밀번호 같은 정보는 넣지 않는다.
+Secret Key 모르면 Signature는 복호화 불가 -> 토큰 변조해도 Signature가 달라 유효하지 않은 토큰으로 처리
+
+
+- Header
+
+Base64Url로 이코딩
+
+{
+"typ" : "JWT"
+"alg" : "HS256"  // HMAC, SHA256, RSA  --> 토큰 검증 할 때 사용되는 Signature 생성에 사용할 알고리즘
+}
+
+
+- Payload
+
+토큰에 담을 정보 한 조각을 claim이라고 부름. name/value 한 쌍
+유저의 고유 ID, meta data 등 인증에 필요한 정보 들어 있음
+Base64Url로 인코딩
+
+}
+ "loggedInAs" : "admin",
+ "iat" : 1422779638  // issued at time
+}
+
+
+- Signature
+
+헤더의 인코딩값과 정보의 인코딩 값을 합친 후 주어진 비밀키로 해쉬하여 생성
+
+HMAC-SHA256(
+ secret,
+ base64urlEncoding(header) + '.' +
+ base64urlEncoding(payload)
+)
+
+
+- JWT 인증 과정
+
+사용자 로그인
+서버에서 계정 정보 읽어 사용자 확인 후 사용자 고유 ID 부여 후, 기타 정보와 함께 Payload에 넣음
+JWT 토큰의 유효기간/옵션 설정, 암호화할 Secret Key를 이용해 액세스 토큰 발급
+사용자는 액세스 토큰을 받아 저장 후(쿠키, local storage) 인증이 필요한 요청마다 토큰을 헤더에 실어 보냄
+서버에서는 해당 토큰의 Signature를 Secret key로 복호화 후, 조작 여부, 유효기간 확인
+검증 완료 시 요청 데이터 보내줌
+
+- 특징
+
+세션/쿠키는 별도 저장소 관리 필요하지만 JWT는 발급 후 검증만 하면 되어 추가 저장소 필요 없다.(Stateless 서버를 유지 보수하는데 유리)
+확장성이 뛰어남
+발급된 JWT 삭제 불가(세션은 필요시 삭제 가능)
+토큰은 탈취 시 유효 기간 종료 전까지 악의적 사용 가능 
+    -> Refresh Token 사용
