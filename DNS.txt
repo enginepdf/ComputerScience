@@ -46,3 +46,21 @@ scutil --dns
     com, org, net 등과 같은 상위 레벨 도메인과 모든 국가의 상위 레벨 도메인에 대한 관리를 담당하는 DNS 서버. 트래픽 집중. 
     트리 구조로 요청에 대해 하위 트리로 연결시켜줌
 
+https://aws.amazon.com/ko/route53/what-is-dns/
+
+Root > Top Level Domains > Second Level Domains > subdomains > hosts
+
+    DNS가 트래픽을 웹 애플리케이션에 라우팅하는 방법(AWS Route 53 포함)
+
+            사용자가 웹 브라우저를 열어 주소 표시줄에 www.example.com을 입력하고 enter 키 누름
+            DNS 해석기(DNS resolver)로 라우팅. 일반적으로 케이블 인터넷 공급업체, DSL(Digital Subscriber Line) 광대역 공급업체 또는 기업 네트워크 같은 인터넷 서비스 제공업체(ISP)가 관리
+            ISP의 DNS 해석기는 www.example.com에 대한 요청을 DNS 루트 이름 서버에 전달
+            ISP의 DNS 해석기는 www.example.com에 대한 요청을 이번에는 .com 도메인의 TLD 이름 서버 중 하나에 다시 전달. 
+                    .com 도메인의 이름 서버는 example.com 도메인과 연관된 4개의 Amazon Route 53 이름 서버의 이름을 사용하여 요청에 응답
+            ISP의 DNS 해석기는 Amazon Route 53 이름 서버 하나를 선택해 www.example.com에 대한 요청을 해당 이름 서버에 전달
+            Amazon Route 53 이름 서버는 example.com 호스팅 영역에서 www.example.com 레코드를 찾아 웹 서버의 IP 주소 등 연관된 값을 받고 이 IP 주소를 DNS 해석기로 반환
+            ISP의 DNS 해석기가 사용자에게 필요한 IP 주소를 확보. 해석기는 이 값을 웹 브라우저로 반환
+                    DNS 해석기는 다음에 누군가 example.com을 탐색할 때 좀 더 빠르게 응답할 수 있도록 사용자가 지정하는 일정 기간 동안 example.com의 IP 주소를 캐싱(저장)
+            웹 브라우저는 DNS 해석기로부터 얻은 IP 주소로 www.example.com에 대한 요청을 전송
+            해당 IP 주소에 있는 웹 서버 또는 그 밖의 리소스는 www.example.com의 웹 페이지를 웹 브라우저로 반환하고, 웹 브라우저는 이 페이지를 표시
+

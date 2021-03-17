@@ -13,7 +13,32 @@ SSL(Secure Socket Layers) : SSL은 웹사이트와 브라우저(혹은, 두 서�
                             안전한 의사소통 태널을 수립할 때는 공개키 암호를 사용, 이 채널을 통해 임시의 무작위 대칭키를 생성 및 교환. 해당 대칭키는 나머지 암호화에 활용
                             컴퓨터 간의 통신(핸드쉐이크 -> 세션 -> 세션 종료), 암호화된 HTTP 메시지 교환 전에 클라이언트와 서버는 SSL 핸드쉐이크 진행(프로토콜 버전 번호 교환, 양쪽이 알고 있는 pre master secret 키 생성 및 교환, 양쪽의 신원 인증, 채널 암호화 하기 위한 임시 세션 키 생성)
 
-TLS(Transport Layer Security) : TLS는 가장 최신 기술로 더 강력한 버전의 SSL
+TLS(Transport Layer Security) : TLS는 가장 최신 기술로 더 강력한 버전의 SSL(세션 키를 만들 때 유지하고자 할 때 공개키 암호화 방식 사용)
+                                TLS is a cryptographic protocol that provides end-to-end security of data sent between applications over the Internet. 
+                                It is mostly familiar to users through its use in secure web browsing, and in particular the padlock icon that appears in web browsers when a secure session is established. 
+                                However, it can and indeed should also be used for other applications such as e-mail, file transfers, video/audioconferencing, instant messaging and voice-over-IP, as well as Internet services such as DNS and NTP
+
+                                TLS is normally implemented on top of TCP in order to encrypt Application Layer protocols such as HTTP, FTP, SMTP and IMAP, 
+                                although it can also be implemented on UDP, DCCP and SCTP as well (e.g. for VPN and SIP-based application uses). 
+                                This is known as Datagram Transport Layer Security (DTLS) and is specified in RFCs 6347, 5238 and 6083
+
+                                TLS uses a combination of symmetric and asymmetric cryptography, as this provides a good compromise between performance and security when transmitting data securely.
+
+                                With symmetric cryptography, data is encrypted and decrypted with a secret key known to both sender and recipient; 
+                                typically 128 but preferably 256 bits in length (anything less than 80 bits is now considered insecure). 
+                                Symmetric cryptography is efficient in terms of computation, but having a common secret key means it needs to be shared in a secure manner.
+
+                                Asymmetric cryptography uses key pairs – a public key, and a private key. The public key is mathematically related to the private key, but given sufficient key length, it is computationally impractical to derive the private key from the public key. 
+                                This allows the public key of the recipient to be used by the sender to encrypt the data they wish to send to them, but that data can only be decrypted with the private key of the recipient.
+
+                                The advantage of asymmetric cryptography is that the process of sharing encryption keys does not have to be secure, 
+                                but the mathematical relationship between public and private keys means that much larger key sizes are required. 
+                                The recommended minimum key length is 1024 bits, with 2048 bits preferred, but this is up to a thousand times more computationally intensive than symmetric keys of equivalent strength 
+                                (e.g. a 2048-bit asymmetric key is approximately equivalent to a 112-bit symmetric key) 
+                                and makes asymmetric encryption too slow for many purposes.
+
+                                For this reason, TLS uses asymmetric cryptography for securely generating and exchanging a session key. 
+                                The session key is then used for encrypting the data transmitted by one party, and for decrypting the data received at the other end. Once the session is over, the session key is discarded.
 
 HTTPS(Hyper Text Protocol Secure) :  HTTPS는 웹사이트를 SSL/TLS 인증서로 보안하는 경우 URL 창에 표시, SSL을 조합한 HTTP를 HTTPS(HTTP Secure) or HTTP over SSL이라고 부름.
                                      HTTP 통신하는 소켓 부분을 SSL, TLS라는 프로토콜로 대체
