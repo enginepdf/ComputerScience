@@ -1,13 +1,17 @@
 reference 
 
     https://medium.com/@Magical_Mudit/understanding-ssh-workflow-66a0e8d4bf65
-
+    https://www.youtube.com/watch?v=Yjrfm_oRO0w
 
 1. Verification of the server by the client.
 
 2. Generation of a session key to encrypt all the communication.
 
-    After the server is verified, both the parties negotiate a session key using a version of something called the Diffie-Hellman algorithm. 
+    After the server is verified, both the parties negotiate a session key using a version of something called the Diffie-Hellman algorithm.
+
+        g is a small prime number, n is a big prime number.
+        a(kind of private key), b(kind of private key) --> g^(a) mod n(kind of public key), g^(b) mod n(kind of public key) -- exchange public ones --> {g^(b)}^a mod n === g^(ab) mod n,  {g^(a)}^b mod n === g^(ab) mod n
+
     This algorithm is designed in such a way that both the parties contribute equally in generation of session key. 
     The generated session key is shared symmetric key i.e. the same key is used for encryption and decryption.  (Id est, That is)
 
