@@ -1,0 +1,29 @@
+reference 
+
+    https://medium.com/@Magical_Mudit/understanding-ssh-workflow-66a0e8d4bf65
+
+
+1. Verification of the server by the client.
+
+2. Generation of a session key to encrypt all the communication.
+
+    After the server is verified, both the parties negotiate a session key using a version of something called the Diffie-Hellman algorithm. 
+    This algorithm is designed in such a way that both the parties contribute equally in generation of session key. 
+    The generated session key is shared symmetric key i.e. the same key is used for encryption and decryption.  (Id est, That is)
+
+3. Authentication of the client.
+
+    Authentication is done using SSH key pair
+    One is public key that is used to encrypt data and can be freely shared. The other one is private key that is used to decrypt data and is never shared with anyone.
+
+        the server generates a random number and uses the public key to encrypt the number and sends this encrypted message.
+
+        If the client has the correct private key, it will decrypt the message to obtain the random number
+
+        The client combines the obtained random number with the shared session key and calculates the MD5 hash of this value.
+
+        The client then sends this MD5 hash back to the server as an answer to the encrypted number message.
+
+        The server uses the same shared session key and the original number that it sent to the client to calculate the MD5 value on its own. 
+        It compares its own calculation to the one that the client sent back. If these two values match, it proves that the client was 
+        in possession of the private key and the client is authenticated.
