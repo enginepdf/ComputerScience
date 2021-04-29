@@ -3,6 +3,8 @@ reference
     https://medium.com/@Magical_Mudit/understanding-ssh-workflow-66a0e8d4bf65
     https://www.youtube.com/watch?v=Yjrfm_oRO0w
 
+SSH(Secure Shell Protocol) --> symmetric encrpytion + asymmetric encryption
+
 1. Verification of the server by the client.
 
 2. Generation of a session key to encrypt all the communication.
