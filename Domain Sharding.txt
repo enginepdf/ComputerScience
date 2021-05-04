@@ -1,0 +1,21 @@
+reference
+
+    https://blog.stackpath.com/glossary-domain-sharding/
+
+
+
+By default, web browsers limit the number of active connections for each domain. When the number of resources to download exceeds that limit, 
+
+users experience slow page load times as downloads are queued.
+
+developers may split content across multiple subdomainsmain which lets the user retrieve files from the same source with greater throughput.
+
+With domain sharding, the user’s browser connects to two or more different domains to simultaneously download the resources needed to render the web page.
+
+Modern web browsers support on average 6 concurrent downloads per domain
+
+YouTube splits images and script resources across two domains: i.ytimg.com and s.ytimg.com. 
+
+    i.ytimg.com contains icons, logos, thumbnails, avatars, and other visual elements 
+    while s.ytimg.com contains JavaScript, CSS, favicons, sprite sheets, and objects related to website optimization and analytics. 
+    Users visiting youtube.com will simultaneously download the scripts and media needed to render the page
