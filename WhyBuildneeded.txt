@@ -1,0 +1,57 @@
+Reference 
+
+    https://stackoverflow.com/questions/52944747/why-build-is-needed
+    https://stackoverflow.com/questions/2650168/building-vs-compiling-java
+    https://en.wikipedia.org/wiki/Software_build
+    https://reflectoring.io/spring-boot-health-check/
+    https://stackoverflow.com/questions/1622506/programming-definitions-what-exactly-is-building
+
+
+In software development, a build is the process of converting source code files into standalone software artifact(s) that can be run on a computer, or the result of doing so
+Building software is an end-to-end process that involves many distinct functions
+
+    Version control(function)
+
+        carries out activities such as workspace creation and updating, baselining and reporting. 
+        It creates an environment for the build process to run in and captures metadata about the inputs and output 
+        of the build process to ensure repeatability and reliability
+
+    Code quality
+
+        comments, unit tests, duplication, complexity, coding rules, potential bugs and architecture & design
+
+    Compilation
+
+        turns source files into directly executable or intermediate objects. Not every project will require this function
+
+
+Build 
+
+    a compiled version of a program
+
+Compiling
+
+    to convert (a program) into a machine-code or lower-level form in which the program can be executed
+    Many compilers handle the linking step automatically after compiling source code
+    the act of turning source code into intermediate object code
+
+Linking 
+
+    the act of combining object code with libraries into a raw executable
+
+Building 
+
+    the sequence composed of compiling and linking, with possibly other tasks such as installer creation
+    testing
+
+Packaging
+
+    webpack etc
+
+Running health checks
+
+    Health check functions tell us the status of our running application like whether the service is slow or not available
+
+Generating reports
+
+    how many warnings and errors occurred during the build
