@@ -19,3 +19,9 @@ YouTube splits images and script resources across two domains: i.ytimg.com and s
     i.ytimg.com contains icons, logos, thumbnails, avatars, and other visual elements 
     while s.ytimg.com contains JavaScript, CSS, favicons, sprite sheets, and objects related to website optimization and analytics. 
     Users visiting youtube.com will simultaneously download the scripts and media needed to render the page
+
+
+
+Adding multiple domains can, however, introduce performance losses. 
+Web browsers have to perform a DNS lookup on each additional domain and maintain connections to each domain, 
+resulting in slower initial load times. A study by Yahoo! shows 2 to 4 domains as the optimal ratio, with additional domains resulting in degraded performance
