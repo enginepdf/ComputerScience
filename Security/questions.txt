@@ -1,0 +1,274 @@
+1. TCP(Transmission Control Protocol)와 UDP(User Datagram Protocol)의 차이점
+
+2. 침입탐지시스템(IDS)과 침입방지시스템(IPS)의 정의
+
+3. 바이러스와 악성코드의 차이점은 무엇인가요?
+
+4. 파견 관제와 원격 관제의 차이점은 무엇인가요?
+
+5. DoS(Denial of Service)와 DDoS(Distributed Denial of Service)의 차이점
+
+6. 위협과 위험의 차이
+
+7. 데이터 암호화 과정을 OSI 7계층과 연관해 설명
+
+8. 크로스 사이트 요청 위조(CSRF)와 크로스 사이트 스크립팅(XSS)의 뜻을 말하고 차이점을 설명
+
+9. 크로스 사이트 스크립팅의 종류
+
+10. 10대 웹 애플리케이션 취약점(OWASP TOP 10) 중 상위 5개에 대해 설명
+
+11. 블라인드 SQI 인젝션에 대해 설명
+
+12. 악성코드의 동적분석방법 사례에 대해 설명
+
+13. ‘보안’의 정의
+
+14. 웹쉘(WebShell)
+
+15. 서버 취약점 점검을 한다고 했을 때, 확인하는 것
+
+16. 액티브X 사용 시 보안 취약점
+
+17. 랜섬웨어에 감염됐을 때 대처법
+
+18. call by value와 call by reference에 대해 설명
+
+19. FTP 액티브 모드와 패시브 모드의 차이점은 무엇인가요?
+
+20. ARP 스푸핑
+
+21. 정보보호 점검자와 실무자의 차이
+
+22. 피싱, 스미싱, 파밍 세 개의 특징과 차이점
+
+23. 트로이 목마 바이러스
+
+24. HTTP와 HTTPS의 차이점, HTTPS가 보안에 더 좋은 이유
+
+25. 인터넷
+
+26. 도메인 네임 시스템(DNS)의 작동 원리
+
+27. 방화벽과 웹방화벽의 차이점
+
+28. APT 공격
+
+29. 사물인터넷(IoT)
+
+30. 가상 메모리(Thrashing에 대해 설명)
+
+31. 리눅스 명령어 find 명령어
+
+32. 리버싱
+
+33. Traceroute 분석
+
+34. Firewaling의 원리
+
+35. Scanning ( Active Host Scanning , Port Scanning , Vulnerability Scanning)
+
+36. Active Host Scanning의 종류?
+
+- ICMP Echo Scanning
+
+- TCP Ping Scanning
+
+- UDP Ping Scanning
+
+- ARP Scanning
+
+37. Port Scanning의 종류?
+
+1) UDP Port Scanning
+
+2) TCP Port Scanning
+
+- CONNECT Scanning
+
+- SYN Scanning
+
+- FIN / NULL / X-MAS Scanning
+
+- FTP Bounce Scanning
+
+- Idle Scanning
+
+38. 취약점 스캐닝 Tool의 종류?
+
+1) 네트워크 / 시스템 취약점 스캐너
+
+- OpenVAS
+
+- Nmap
+
+- Zenmap
+
+- Nessus
+
+- Sscan
+
+- SARA
+
+- Retina
+
+- Nikto
+
+2) 웹 취약점 스캐너
+
+- Netsparker
+
+- Acunetix
+
+- AppScan
+
+- Burp Suit
+
+- Webinspect
+
+- N-Stalker
+
+39. War Dialing
+
+40. Proxy Server
+
+41. TOR Proxy
+
+42. NetBIOS
+
+43. Brute Forcing , Dictionary Attack , Hybrid Attack
+
+44. SFX (self-extracting file)
+
+45. RAT (Remote Administration Tool)
+
+46. MS08-014 Exploit?
+
+47. SSH Tunneling?
+
+48. HTTP Tunneling?
+
+49. Covering Track
+
+1) Hstory 및 로그조작
+
+2) 데이트 은닉(Data Hiding)
+
+
+50. 
+
+ 멀웨어 (윔 vs 바이러스 vs 트로이목마)
+ 랜섬웨어
+ Dos/DDos
+ 애드웨어
+ 스파이웨어
+
+
+51.
+
+데이터 영역
+
+ - 전역변수(static 변수)
+
+힙 영역 (런타임 크기 결정)
+
+ - 동적 할당
+
+스택 영역 (컴파일 타임에 크기 결정)
+
+ - 지역변수, 함수
+
+
+ 52. 통신 패킷
+
+
+ 53. 스위치, 라우터 그리고 두 차이점
+
+
+ 54. ESM
+
+ 55. ARP 스프핑 , DNS 스프핑
+
+ 56. inode
+
+ 57. IPS , IDS
+
+ 58. OSI 계층마다의 방화벽 기능
+
+ 59. 3way hand shake , 4way hand shake에 대해서 설명하고 둘의 차이점
+
+ 60. OSPF , RIP에 대해서 설명하고 둘의 차이점
+
+ 61. VPN
+
+ 62. NAT
+
+ 63. 파밍과 파싱에 대해서 설명하고 둘의 차이점
+
+ 64. L2 라우터 , L3 라우터에 대해서 설명하고 둘의 차이점
+
+ 65. SYN Flooding
+
+ 66. Subnetting
+
+ 67. static routing , dynamic routing에 대해서 설명하고 둘의 차이점
+
+ 68. buffer overflow 발생과정에 대해서 설명
+
+ 69. MDM 솔루션
+
+ 70. FTP 방식 중에서 Active Mode와 Passive Mode에 대해서 설명
+
+ 71. 웹 메소드에 Get 방식과 Post 방식
+
+ 72. 스니핑, 스머핑, 스미싱, 스푸핑에 대해서 설명
+
+ 73. MITM 공격
+
+ 74. DNS에 대해서 설명
+
+ 75. MAC 과 IP에 대해서 설명하고 둘의 차이점을 설명
+
+ 76. 프로세스 , 쓰레드에 대해서 설명하고 둘의 차이점에 대해서 설명
+
+ 77. 바이러스 , 웜에 대해서 설명하고 둘의 차이점에 대해서 설명
+
+ 78. 정보보호 3대 요소
+
+ 79. WAF , IDS, IPS, DDoS 보안장비, Anti-DDoS에 대해서 설명
+
+ 80. 방화벽은 몇 계층 장비인지 설명
+
+ 81. 랜섬웨어란? (크립토락커)
+
+ 82. 하트블리드란? (OpenSSL)
+
+ 83. ghost 기법
+
+ 84. 리버싱
+
+ 85. ActiveX
+
+ 86. 메모리 해킹
+
+ 87. 웹해킹
+
+ 88. 웹 방화벽
+
+ 89. 가상 메모리란 무엇인가? (Thrashing에 대해 설명)
+
+ 90. 암호학적으로 패킷을 보호하는 방법을 설명
+
+ 91. 리눅스 명령어 find 명령어에 대해서 설명
+
+ 92. 프로세스의 상태를 종류별로 설명
+
+ 93. 문맥교환에 대해서 설명
+
+ 94. 정보 위협의 종류에 대해서 설명
+
+ 95. 웹 서비스 취약점 진단
+
+ 96. 실행중인 프로세스 보는 방법과 종료시키는 방법에 대해서 설명
+
+ 
