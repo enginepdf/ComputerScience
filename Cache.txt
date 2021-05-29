@@ -10,3 +10,17 @@ CPU가 어떤 데이터를 원할 것인가를 어느 정도 예측할 수 있�
 공간 지역성(Spatial Locality) : 대부분의 실제 프로그램이 참조된 주소와 인접한 주소의 내용이 다시 참조되는 특성
 
 캐시가 가까이 있더라도 찾고자 하는 데이터가 어느 곳에 저장되어 있는지 몰라 모든 데이터를 순회한다면 시간이 오래 걸림 -> Caching line(캐시에 데이터를 저장할 때 특정 자료구조를 사용하여 묶음으로 처리)
+
+Cache-Control:public, max-age=31536000
+Cache-Control:private
+             :no-cache
+             :no-store
+Last-Modified: Mon, 03 Jan 2011 17:45:57 GMT
+ETag: "15f0fff99ed5aae4edffdd6496d7131f"    (Entity Tag)
+
+    The ETag (or Entity Tag) works in a similar way to the Last-Modified header except its value is a digest of the resources contents (for instance, an MD5 hash). 
+    This allows the server to identify cached contents of the resource are different to the most recent version.
+
+Cache Busting
+
+    Cache busting solves the browser caching issue by using a unique file version identifier to tell the browser that a new version of the file is available.
