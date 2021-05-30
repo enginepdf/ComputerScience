@@ -1,0 +1,15 @@
+Reference
+
+    https://en.wikipedia.org/wiki/Load_testing
+
+
+Load testing generally refers to the practice of modeling the expected usage of a software program by simulating multiple users accessing the program concurrently
+
+
+sudo npm intall -g loadtest
+
+    loadtest -t <time> -c <the number of concurrent clients hitting the server> --rps <requests per second> <URL> 
+
+https://artillery.io
+
+siege
