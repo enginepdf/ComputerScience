@@ -1,0 +1,25 @@
+https://en.wikipedia.org/wiki/Dependency_injection
+
+    In software engineering, dependency injection is a technique in which an object receives other objects that it depends on
+
+
+``` server.js
+
+const express = require('express');
+const bcrypt = require('bcrypt-nodejs');
+
+const signin = require('./controllers/signin');
+
+const app = express();
+
+app.post('/signin', signin.process(bcrypt))  // dependency injection
+
+```
+
+``` signin.js 
+
+const process = (bcrypt) => {
+
+}
+
+```
