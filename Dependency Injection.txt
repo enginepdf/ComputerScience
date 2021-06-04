@@ -16,10 +16,14 @@ app.post('/signin', signin.process(bcrypt))  // dependency injection
 
 ```
 
-``` signin.js 
+``` controllers/signin.js 
 
 const process = (bcrypt) => {
 
+}
+
+module.exports = {
+  process: process
 }
 
 ```
