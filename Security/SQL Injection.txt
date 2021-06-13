@@ -1,4 +1,7 @@
-// reference : https://m.blog.naver.com/PostView.nhn?blogId=kdi0373&logNo=220378248710&proxyReferer=https:%2F%2Fwww.google.com%2F#
+reference 
+    
+  https://m.blog.naver.com/PostView.nhn?blogId=kdi0373&logNo=220378248710&proxyReferer=https:%2F%2Fwww.google.com%2F#
+  https://en.wikipedia.org/wiki/SQL_injection
 
 SQL Injection 점검 항목
 
@@ -27,3 +30,14 @@ SQL Injection 점검 항목
      - Hex-Based : hex 값을 이용하여 특수기호 필터링을 우회하는 기법
 
      - Stacked Query : 하나의 트랙잰셕에 많은 쿼리를 사용하는 공격하는 기법
+
+
+SELECT * FROM users WHERE email='example@gmail.com' AND password='' or 1=1--' LIMIT 1     
+
+  Many databases will ignore the text after the '--' string as this denotes a comment.
+
+select * from person where name = 'susan' and age = 2
+
+  Now imagine that instead of entering 'susan' the attacker entered ' or 1=1; --
+
+    select * from person where name='' or 1=1; -- and age = 2
