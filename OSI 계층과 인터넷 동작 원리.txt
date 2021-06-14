@@ -89,7 +89,7 @@
          계층 7 : 응용 계층(Application Layer) - DATA(메시지)
 
             Message format, Human-Machine Interfaces
-            프로토콜 : DHCP, DNS, FTP, HTTP, Telnet, SSH
+            프로토콜 : DHCP, DNS, FTP, HTTP, Telnet, SSH, SMTP
             최종 목적지로 애플리케이션마다 서비스 제공 방법 규정
             일반적 응용 서비스는 관련된 응용 프로세스들의 사이의 전환 제공
             사용자 인터페이스, 전자우편, 데이터베이스 관리 등의 서비스 제공
@@ -97,7 +97,7 @@
          계층 6 : 표현 계층(Presentation Layer) - DATA
 
             Coding into 1s and 0s; encryption, compression
-            프로토콜 : JPG, MPEG, SMB, AFP
+            프로토콜 : JPG, MPEG, SMB, AFP, ASCII
             코드 간의 번역 담당. 사용자 시스템에서 데이터의 형식 상 차이를 다루는 부담을 응용 계층으로부터 덜어 줌
             압축(전송할 비트 수의 감소를 위해 압축 알고리즘 사용), MIME 인코딩, 암호화 등의 동작이 이루어짐(받은 데이터를 표준방식으로 변환)
             (파일 인코딩, 명령어를 포장, 압축, 암호화)
@@ -115,6 +115,8 @@
             TCP/IP 세션을 만들고 없앰
             세션 구별번호의 추가
             Transport Layer에서 정의된 포트를 사용해서 소켓, 세션 만듬(OSI layer 5 'session layer' uses the ports defined in layer 4 to create sockets and sessions between communicating devices/programs/etc.)
+
+            netstat -an // session table
       
          계층 4 : 전송 계층(Transport Layer) - Segment(캡슐화), (TCP(DATA))  --> 패킷 전달 순서가 달라도 재조립 가능해야 함(패킷 순서번호의 추가), TCP window size, TCP congestion control(부하가 심할 때 라우터가 패킷 버림)
                                                                             TCP/IP illustrated
